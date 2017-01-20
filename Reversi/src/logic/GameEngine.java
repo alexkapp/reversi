@@ -35,7 +35,6 @@ public class GameEngine {
 	}
 	
 	public void clear() {
-		
 		selectedMove = null;
 		board.clear();
 		bGUI.clearGrid();
