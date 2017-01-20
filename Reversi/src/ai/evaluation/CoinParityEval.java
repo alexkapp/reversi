@@ -13,7 +13,7 @@ public class CoinParityEval implements Heuristic {
 		
 		if (board.getCount(state) + board.getCount(state.oppenent()) != 0)
 			return 100 * (board.getCount(state) - board.getCount(state.oppenent())
-					   / (board.getCount(state) + board.getCount(state.oppenent())));
+				   / (board.getCount(state) + board.getCount(state.oppenent())));
 		else return 0;
 	}
 }
