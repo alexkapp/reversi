@@ -44,8 +44,9 @@ public class GameEngine {
 		enableInput();
 	}
 	
-	public Difficulty getDifficultyLevel() 
-	{	return this.level;  }
+	public Difficulty getDifficultyLevel() {	
+		return this.level;  
+	}
 	
 	public void setDifficultyLevel(Difficulty difficulty) {
 		level = difficulty;
@@ -77,7 +78,6 @@ public class GameEngine {
 		
 		AlphaBetaMinMax alphabeta = new AlphaBetaMinMax();
 		Heuristic evalfunc = new WeightedEval(this.level);
-		System.out.println();
 		AI_bestMove = alphabeta.findBestMove(this.board, State.COMPUTER, level.movesAhead(), evalfunc);
 	}
 	
@@ -86,7 +86,6 @@ public class GameEngine {
 		
 		AlphaBetaMinMax alphabeta = new AlphaBetaMinMax();
 		Heuristic evalfunc = new WeightedEval(this.level);
-		System.out.println();
 		Move best = alphabeta.findBestMove(this.board, State.COMPUTER, level.movesAhead(), evalfunc);
 		performMove(best.X(), best.Y(), State.COMPUTER);
 	}
@@ -131,10 +130,10 @@ public class GameEngine {
 				/* creates slight delay before placing computer move
 				 * when the AI search finishes before the animation */
 				if (AI_bestMove != null) {
-				 		try { Thread.sleep(150); } 
-				 		catch (InterruptedException e) {}
-				 		performMove(AI_bestMove.X(), AI_bestMove.Y(), State.COMPUTER);
-				 		AI_bestMove = null;
+				 	try { Thread.sleep(150); } 
+				 	catch (InterruptedException e) {}
+				 	performMove(AI_bestMove.X(), AI_bestMove.Y(), State.COMPUTER);
+				 	AI_bestMove = null;
 				}
 				else { /* wait for search to finish */
 					try { AI_thread.join(); }
@@ -143,7 +142,7 @@ public class GameEngine {
 					AI_bestMove = null;
 				}
 			}
-			else { 
+			else { /* Computer can't move */
 				bGUI.setAvailableMoves(board.findAvailableMoves(State.HUMAN));
 				enableInput();
 			}
