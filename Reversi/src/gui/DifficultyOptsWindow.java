@@ -17,11 +17,11 @@ import gui.SpringUtilities;
 public class DifficultyOptsWindow {
 
 	private JLabel[] labels =  { new JLabel("Moves Ahead:", JLabel.TRAILING), 
-								 new JLabel("Coin Parity Weight:", JLabel.TRAILING),
-								 new JLabel("Mobilty Weight:", JLabel.TRAILING),  
-					             new JLabel("Corner Weight (5):", JLabel.TRAILING),
-					             new JLabel("Stability Weight:", JLabel.TRAILING)
-							   };
+				     new JLabel("Coin Parity Weight:", JLabel.TRAILING),
+				     new JLabel("Mobilty Weight:", JLabel.TRAILING),  
+				     new JLabel("Corner Weight (5):", JLabel.TRAILING),
+				     new JLabel("Stability Weight:", JLabel.TRAILING)
+				    };
 
 	private JTextField[] textfields;
 	private JFrame optFrame = null;
@@ -64,10 +64,10 @@ public class DifficultyOptsWindow {
 		cancelbutton.addActionListener(e -> bGUI.optionsCancelled());
 		basepanel.add(cancelbutton);
 			
-		SpringUtilities.makeCompactGrid(basepanel,
-				                       labels.length + 1, 2,
-				                       8, 8,
-				                       4, 4);
+		SpringUtilities.makeCompactGrid( basepanel,
+				                 labels.length + 1, 2,
+				                  8, 8,
+				                  4, 4);
 
 		this.optFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		optFrame.getContentPane().add(basepanel);
