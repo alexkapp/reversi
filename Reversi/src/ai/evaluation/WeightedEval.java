@@ -9,7 +9,7 @@ import core.State;
  * heuristic can be weighted diffirently in how much it affects the outputted score.
  * 
  * Heuristics Used: coin parity, number of corners owned, Mobility (number of available moves),
- * 				    and stabilty of owned cells
+ * and stabilty of owned cells
  */
 public class WeightedEval implements Heuristic {
 	
@@ -27,14 +27,14 @@ public class WeightedEval implements Heuristic {
 		/* Coin parity */
 		if (board.getCount(maxPlayer) + board.getCount(minPlayer) != 0)
 			score += 100 * level.coinParityWeight()
-						 * (board.getCount(maxPlayer) - board.getCount(minPlayer)
-						 / (board.getCount(maxPlayer) + board.getCount(minPlayer)));
+			  	     * (board.getCount(maxPlayer) - board.getCount(minPlayer)
+				     / (board.getCount(maxPlayer) + board.getCount(minPlayer)));
 		
 		/* Mobility */
 		if (board.getNumMoves(maxPlayer) + board.getNumMoves(minPlayer) != 0)
 			score += 100 * level.mobilityWeight()
-						 * (board.getNumMoves(maxPlayer) - board.getNumMoves(minPlayer)) 
-						 / (board.getNumMoves(maxPlayer) + board.getNumMoves(minPlayer));
+				     * (board.getNumMoves(maxPlayer) - board.getNumMoves(minPlayer)) 
+			  	     / (board.getNumMoves(maxPlayer) + board.getNumMoves(minPlayer));
 		
 		int maxStability = 0;
 		int minStability = 0;
