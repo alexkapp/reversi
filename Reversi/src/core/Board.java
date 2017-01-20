@@ -10,7 +10,7 @@ import utils.GLOBALS;
 import utils.UTILS;
 
 /*
- * A model representation of the game noard
+ * A model representation of the game board
  */
 public final class Board implements Cloneable{
 	
@@ -39,11 +39,13 @@ public final class Board implements Cloneable{
 		board[3][4] = board[4][3] = State.COMPUTER;
 	}
 
-	public State getStateAt(Point p) 	
-	{	return board[p.x][p.y];  }
+	public State getStateAt(Point p) {
+		return board[p.x][p.y];
+	}
 	
-	public State getStateAt(int x, int y) 
-	{	return this.board[x][y];  }
+	public State getStateAt(int x, int y) {
+		return this.board[x][y];  
+	}
 	
 	public void set(Point p, State ps) {
 		if (UTILS.inBounds(p))
@@ -74,16 +76,18 @@ public final class Board implements Cloneable{
 		return count;
 	}
 	
-	public int getNumMoves(State p) 
-	{	return findAvailableMoves(p).size();  }
+	public int getNumMoves(State p) {	
+		return findAvailableMoves(p).size();  
+	}
 	
-	public boolean canMove(State state) 
-	{	return getNumMoves(state) > 0;  }
+	public boolean canMove(State state) {	
+		return getNumMoves(state) > 0;  
+	}
 	
 	public boolean isEndState() {
 		return isFull() || 
-			   isZeroScore() ||
-			   (!canMove(State.BLACK) && !canMove(State.WHITE));
+		       isZeroScore() ||
+		       (!canMove(State.BLACK) && !canMove(State.WHITE));
 	}
 	
 	public boolean isDraw() {
@@ -107,14 +111,14 @@ public final class Board implements Cloneable{
 			if (this.board[x][y] == player) {
 				Traverse traversal = new Traverse(new Move(x, y), player.oppenent(), this);
 				
-				//adds available moves found in the traversal that are not already in the list
+				//add available moves found in the traversal that are not already in the list
 				traversal.getMoves().stream().filter(newMove-> !availmoves.contains(newMove))
 			          		  				 .forEach(m-> availmoves.add(m));
 			}
 		return availmoves;
 	}
 	
-	/* returns a list of moves sorted by the stability of moves' location */
+	/* returns a list of moves sorted by the stability of a move's location */
 	public ArrayList<Move> findAvailableMovesSorted (final State player) {
 		
 		ArrayList<Move> availmoves = new ArrayList<Move>();
