@@ -38,7 +38,7 @@ import utils.UTILS;
 /*
  * The main layout of the game GUI
  */
-public class BoardGUI  implements MouseListener, MouseMotionListener {
+public class BoardGUI  implements MouseListener {
 	
 	private JFrame mFrame = null;
 	private JPanel statuspanel = null;
@@ -96,7 +96,6 @@ public class BoardGUI  implements MouseListener, MouseMotionListener {
 		}
 		
 		boardpanel.addMouseListener(this);
-		boardpanel.addMouseMotionListener(this);
 		
 		grid.get(UTILS.pointToIndex(3, 3)).setPieceColor(State.HUMAN.toColor());
 		grid.get(UTILS.pointToIndex(4, 4)).setPieceColor(State.HUMAN.toColor());
@@ -104,7 +103,7 @@ public class BoardGUI  implements MouseListener, MouseMotionListener {
 		grid.get(UTILS.pointToIndex(3, 4)).setPieceColor(State.COMPUTER.toColor());
 	}
 	
-	/* Inititalizes the top panel that displays the scores and number of avail. moves for human and computer players */
+	/* Inititalizes the top panel that displays the scores and number of avail. moves */
 	private void initStatusPanel() {
 		
 		statuspanel = new JPanel();
@@ -203,15 +202,14 @@ public class BoardGUI  implements MouseListener, MouseMotionListener {
 		
 		JRadioButtonMenuItem smtmCustom = new JRadioButtonMenuItem("(Custom)");
 		bGroup.add(smtmCustom);
-	    smtmCustom.addActionListener(e -> optionWindow = createOptWindow());
-
+	   	smtmCustom.addActionListener(e -> optionWindow = createOptWindow());
 		smDifficulty.add(smtmCustom);	
 	    
-	    mMenu.add(smDifficulty);
+	   	 mMenu.add(smDifficulty);
 	    
 		JMenuItem mtmQuit = new JMenuItem("Quit");
 		mtmQuit.addActionListener(e -> { mFrame.dispose(); 
-										 System.exit(0); 
+						 System.exit(0); 
 		});
 		mMenu.add(mtmQuit);
 	}
@@ -321,7 +319,7 @@ public class BoardGUI  implements MouseListener, MouseMotionListener {
 		grid.stream()
 			.filter(g -> g.getPieceColor() == State.AVAIL.toColor())
 			.forEach(g -> { g.setPieceColor(State.EMPTY.toColor());
-							g.repaint(); });	
+					g.repaint(); });	
 	}
 	
 	public ArrayList<GridSquare> getGrid() {
@@ -349,15 +347,10 @@ public class BoardGUI  implements MouseListener, MouseMotionListener {
 		}
 	}
 	
-	public void mouseReleased(MouseEvent e)			{ return; }
-	public void mouseDragged(MouseEvent e)			{ return; }
-	public void mouseClicked(MouseEvent e) 			{ return; }
-	public void componentHidden(ComponentEvent e)	{ return; }
-	public void componentShown(ComponentEvent e)	{ return; }
-	public void componentMoved(ComponentEvent e)	{ return; }
-	public void mouseMoved(MouseEvent e) 			{ return; }
-	public void mouseEntered(MouseEvent e) 			{ return; }
-	public void mouseExited(MouseEvent e) 			{ return; }
+	public void mouseReleased(MouseEvent e)	{}
+	public void mouseClicked(MouseEvent e) 	{}
+	public void mouseEntered(MouseEvent e) 	{}
+	public void mouseExited(MouseEvent e) 	{}
 	
 	private static void addPopup(Component component, final JPopupMenu popup) {
 		component.addMouseListener(new MouseAdapter() {
