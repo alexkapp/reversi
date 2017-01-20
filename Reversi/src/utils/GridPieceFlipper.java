@@ -13,7 +13,7 @@ import logic.GameEngine;
 /* Animates the flipping of game pieces */
 public class GridPieceFlipper {
 
-    private BoardGUI bgui = null;
+    	private BoardGUI bgui = null;
 	private GameEngine engine = null;
 	private ArrayList<Point> flips = null;
 	private State state = null;
