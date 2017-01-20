@@ -57,9 +57,10 @@ public class WeightedEval implements Heuristic {
 					else 	    /* region 1 is neutral*/			   ;
 				}
 				else if (curState == minPlayer) {
-					if 	(RiskRegions.rrmap[x][y] == 5) {
-						minStability+=5;
+					if (RiskRegions.rrmap[x][y] == 5) {
 						minCorners++;
+						minStability+=5;
+						
 					}
 					else if (RiskRegions.rrmap[x][y] == 4) minStability -= 5;
 					else if (RiskRegions.rrmap[x][y] == 3) minStability++;
@@ -78,6 +79,5 @@ public class WeightedEval implements Heuristic {
 			score += 100 * level.stabilityWeight() * (maxStability - minStability) / (maxStability + minStability);
 				
 		return (int) score;
-	}
-	
+	}	
 }
